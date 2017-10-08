@@ -14,15 +14,13 @@ import android.widget.TextView;
  * Created by saudalmajed on 9/21/2017 AD.
  */
 
-public class BookListingAdapter extends ArrayAdapter<BookListing>{
+public class BookListingAdapter extends ArrayAdapter<BookListing> {
 
 
     public BookListingAdapter(@NonNull Context context, @LayoutRes int resource) {
         super(context, resource);
     }
 
-    @NonNull
-    @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         BookListing book = getItem(position);
@@ -35,6 +33,6 @@ public class BookListingAdapter extends ArrayAdapter<BookListing>{
         title.setText(book.getTitle());
         author.setText(book.getAuthors());
 
-return convertView;
+        return convertView;
     }
 }

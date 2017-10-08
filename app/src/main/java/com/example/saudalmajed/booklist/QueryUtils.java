@@ -12,7 +12,6 @@ import java.util.List;
 /**
  * Created by saudalmajed on 9/21/2017 AD.
  */
-
 public class QueryUtils {
     private QueryUtils() {
     }
@@ -32,14 +31,12 @@ public class QueryUtils {
                 authorsListInString += ", " + authorsList.getString(i);
             }
         }
-
         return authorsListInString;
     }
 
     public static List<BookListing> extractBooks(String json) {
 
         List<BookListing> books = new ArrayList<>();
-
         try {
             JSONObject jsonResponse = new JSONObject(json);
 
@@ -59,8 +56,6 @@ public class QueryUtils {
                 if (!bookInfo.isNull("authors")) {
                     JSONArray authorsArray = bookInfo.getJSONArray("authors");
                     authors = formatListOfAuthors(authorsArray);
-                } else {
-                    books = null;
                 }
                 // Add the new {@link book} to the list of books.
                 books.add(new BookListing(title, authors));
@@ -71,9 +66,7 @@ public class QueryUtils {
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the Books JSON results", e);
         }
-
         // Return the list of books
         return books;
     }
-
 }
