@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     TextView emptyListTextView;
     ListView listView;
     BookListingAdapter bookListAdapter;
+    String key = "key";
     static final String SEARCH_RESULTS = "booksSearchResults";
 
 
@@ -50,13 +51,6 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         // Set the adapter on the {@link ListView}
         listView.setAdapter(bookListAdapter);
-
-        if (savedInstanceState != null) {
-            BookListing[] books = (BookListing[]) savedInstanceState.getParcelableArray(SEARCH_RESULTS);
-            bookListAdapter.addAll(books);
-        }
-
-
     }
 
     public void SearchButton(View view) {
@@ -220,7 +214,9 @@ public class MainActivity extends AppCompatActivity {
         BookListing[] books = new BookListing[bookListAdapter.getCount()];
         for (int i = 0; i < books.length; i++) {
             books[i] = bookListAdapter.getItem(i);
+
         }
 
+        outState.putParcelableArray(key, books);
     }
 }
